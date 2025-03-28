@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="form-container">
+    <div class="user-authentication">
+        <div class="auth-prompt d-flex-center-column">
+            <span class="title">Have an account?</span>
+            <a href="{% url 'login-page' %}" class="auth-prompt-button">Log In</a>
+        </div>
+        <div class="auth-form d-flex-center-column">
+            <span class="title">Create Account</span>
+            <form action="{% url 'signup-page' %}" method="POST" class="user-form d-flex-center-column">
+                {% csrf_token %}
+                {% for field in form %}
+                <div class="form-item">
+                    {{field}}
+                </div>
+                {% endfor %}
+                <div class="form-button">
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{%endblock%}
