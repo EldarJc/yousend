@@ -109,6 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+# Set the custom user model
+AUTH_USER_MODEL = 'yousend_auth.CustomUser'
+
+# Set the URL for the login page
+LOGIN_URL = "yousend_auth:login-page"
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -136,4 +141,5 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Set the directory for uploaded media files
 MEDIA_ROOT = BASE_DIR / 'uploads'
