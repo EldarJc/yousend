@@ -1,0 +1,63 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
+  <link rel="shortcut icon" href="{% static 'imgs/logo.png' %}" type="image/x-icon" />
+  <title>{% block title %}YouSend {% endblock %}</title>
+</head>
+
+<body>
+  <header class="header">
+    <nav class="nav container-lg">
+      <img class="logo" src="{% static 'imgs/logo.png' %}" alt="YouSend Logo" />
+      <ul class="nav-list">
+        <li class="nav-item"><a href="#">Home</a></li>
+        <li class="nav-item"><a href="#">Product</a></li>
+        <li class="nav-item"><a href="#">Pricing</a></li>
+        <li class="nav-item"><a href="#">Contact Us</a></li>
+      </ul>
+      <ul class="auth-actions">
+        {% if request.user.is_authenticated %}
+        <li class="auth-item"><a href="{% url 'logout-page' %}" class="btn btn-primary">Logout</a></li>
+
+        {% else %}
+        <li class="auth-item"><a href="{% url 'login-page' %}" class="btn btn-dark-gray">Log in</a></li>
+        <li class="auth-item"><a href="{% url 'signup-page' %}" class="btn btn-darkblue">Sign up</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+  </header>
+
+  <main class="main-content container-lg">
+    {% block content %}
+    {% endblock %}
+  </main>
+
+  <footer class="footer">
+    <div class="footer-items container-lg">
+      <span>&copy; YouSend</span>
+      <nav>
+        <ul class="footer-list">
+          <li class="footer-item"><a href="#">Help Center</a></li>
+          <li class="footer-item"><a href="#">Privacy Policy</a></li>
+          <li class="footer-item"><a href="#">Cookie Policy</a></li>
+          <li class="footer-item"><a href="#">Terms of Service</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+  
+  <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>
